@@ -4,7 +4,7 @@ describe 'Wikipedia' do
   it 'can search' do
     home_page.visit
     header.search('Apple')
-    expect(Ferris::Browser.browser.title).to eql 'Apple - Wikipedia'
+    expect(Ferris::Config.browser.title).to eql 'Apple - Wikipedia'
   end
 
   it 'can check a region is present' do

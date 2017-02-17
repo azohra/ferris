@@ -8,10 +8,10 @@ RSpec.configure do |config|
   config.include Ferris::SiteObject
 
   config.before(:each) do
-    Ferris::Browser.browser = Watir::Browser.new :chrome
+    Ferris::Config.browser = Watir::Browser.new :chrome
   end
 
   config.after(:each) do |_scenario|
-    Ferris::Browser.browser.close
+    Ferris::Config.browser.close
   end
 end
