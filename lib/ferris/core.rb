@@ -47,13 +47,6 @@ module Ferris
     def initialize(browser = Config.browser)
       @browser = browser
       @base_url = self.class.base_url || ''
-      self.class.element_list.each do |e_name|
-        if send(e_name).is_a?(Watir::HTMLElementCollection)
-          send(e_name).each_with_index { |element, index| element.keyword = "#{e_name}_#{index}" }
-        else
-          send(e_name).keyword = e_name
-        end
-      end
     end
 
     def present?
@@ -90,7 +83,7 @@ module Ferris
     end
 
     class << self
-      attr_writer   :required_element_list, :element_list
+      attr_writer   :required_element_list
       attr_reader   :require_url, :require_page_title
       attr_accessor :base_url
 
@@ -105,22 +98,16 @@ module Ferris
         define_method('page_title') { |*args| yield(*args) }
       end
 
-      def element_list
-        @element_list ||= []
-      end
-
       def required_element_list
         @required_element_list ||= []
       end
 
       def inherited(subclass)
         subclass.required_element_list = required_element_list.dup
-        subclass.element_list = element_list.dup
       end
 
       def element(name, required: false, &block)
         define_method(name) { |*args| instance_exec(*args, &block) }
-        element_list << name.to_sym
         required_element_list << name.to_sym if required
       end
     end
