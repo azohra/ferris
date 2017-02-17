@@ -1,5 +1,8 @@
 require_relative '../lib/ferris'
 require_relative 'support/site'
+require 'coveralls'
+
+Coveralls.wear!
 
 RSpec.configure do |config|
   config.include Ferris::SiteObject

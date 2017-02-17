@@ -3,21 +3,20 @@
 Gem::Specification.new do |spec|
   spec.name          = 'ferris_watir'
   spec.version       = '0.1.1'
+  spec.platform      = Gem::Platform::RUBY
   spec.authors       = ['Automation Wizards']
   spec.email         = ['Justin.Commu@loblaw.ca']
-
+  spec.homepage      = 'https://loblawdigital.ca'
   spec.summary       = 'Next level web testing framework'
   spec.description   = 'An un-opinionated tes framework built on top of Watir'
-  spec.homepage      = 'https://loblawdigital.ca'
   spec.license       = 'MIT'
-
-  spec.files         = Dir['LICENSE', 'README.md', 'CHANGES.md', 'lib/**/*']
-  spec.bindir        = 'exe'
-  spec.platform      = Gem::Platform::RUBY
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.files         = `git ls-files`.split("\n")
+  spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_runtime_dependency     'watir',       '>= 6.2.0'
-  spec.add_development_dependency 'watir_model', '>= 0.2.2'
-  spec.add_development_dependency 'rspec',       '>= 3.5.0'
+  spec.add_dependency             'watir', '~> 6.1'
+  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'coveralls'
+
 end
