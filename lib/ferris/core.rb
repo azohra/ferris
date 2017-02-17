@@ -47,7 +47,6 @@ module Ferris
     def initialize(browser = Config.browser)
       @browser = browser
       @base_url = self.class.base_url || ''
-      binding.pry
       self.class.element_list.each do |e_name|
         if send(e_name).is_a?(Watir::HTMLElementCollection)
           send(e_name).each_with_index { |element, index| element.keyword = "#{e_name}_#{index}" }
