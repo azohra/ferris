@@ -18,6 +18,10 @@ describe 'Wikipedia' do
     expect(apple_page.loaded?).to be_truthy
   end
 
+  it 'can check an elements keyword' do
+    expect(apple_page.article_heading.keyword).to eq(:article_heading)
+  end
+
   it 'can throw a .loaded? exception' do
     expect { home_page.loaded? }.to raise_error(Ferris::RequirementsException)
   end

@@ -4,5 +4,6 @@ module Pages
     page_title(required: true) { 'Apple - Wikipedia' }
 
     element(:article_heading, required: true) { browser.h1(id: 'firstHeading') }
+
   end
 end

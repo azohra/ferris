@@ -1,3 +1,4 @@
+require 'pry'
 module Ferris
   module Config
     class << self
@@ -83,7 +84,7 @@ module Ferris
     end
 
     class << self
-      attr_writer   :required_element_list
+      attr_writer   :required_element_list, :element_list
       attr_reader   :require_url, :require_page_title
       attr_accessor :base_url
 
@@ -102,12 +103,8 @@ module Ferris
         @required_element_list ||= []
       end
 
-      def inherited(subclass)
-        subclass.required_element_list = required_element_list.dup
-      end
-
       def element(name, required: false, &block)
-        define_method(name) { |*args| instance_exec(*args, &block) }
+        define_method(name) { |*args| instance_exec(*args, &block).tap { |el| el.keyword = name if el.respond_to?(:keyword)} }
         required_element_list << name.to_sym if required
       end
     end
