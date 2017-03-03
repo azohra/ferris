@@ -1,4 +1,4 @@
-# Ferris [![Build Status](https://travis-ci.org/automation-wizards/ferris.svg?branch=master)](https://travis-ci.org/automation-wizards/ferris)
+# Ferris [![Build Status](https://travis-ci.org/automation-wizards/ferris.svg?branch=master)](https://travis-ci.org/automation-wizards/ferris) [![Coverage Status](https://coveralls.io/repos/github/automation-wizards/ferris/badge.svg?branch=master)](https://coveralls.io/github/automation-wizards/ferris?branch=master)
 
 ## Synopsis
 
