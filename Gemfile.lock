@@ -25,6 +25,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rake (12.0.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -38,6 +39,8 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    ruby-debug-ide (0.6.0)
+      rake (>= 0.8.1)
     rubyzip (1.2.1)
     selenium-webdriver (3.1.0)
       childprocess (~> 0.5)
@@ -65,6 +68,7 @@ DEPENDENCIES
   ferris_watir!
   pry
   rspec (~> 3.0)
+  ruby-debug-ide
 
 BUNDLED WITH
-   1.14.3
+   1.14.6
