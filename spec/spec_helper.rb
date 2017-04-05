@@ -1,5 +1,4 @@
-require_relative '../lib/ferris'
-require_relative 'support/site'
+require './spec/support/site'
 require 'coveralls'
 
 Coveralls.wear!
