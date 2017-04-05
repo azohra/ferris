@@ -29,7 +29,14 @@ module Ferris
         class_name.new.tap do |region|
           if block_given?
             root = instance_exec(&blk)
-            return root.map { |rt| class_name.new.tap { |rgn| rgn.root = rt } } if root.respond_to?(:to_a)
+            if root.respond_to?(:to_a)
+              res = root.map do |rt|
+                class_name.new.tap do |rgn|
+                  rgn.root = rt
+                end
+              end
+              return res
+            end
             region.root = root
           end
         end
@@ -84,7 +91,7 @@ module Ferris
     end
 
     class << self
-      attr_writer   :required_element_list, :element_list
+      attr_writer   :required_element_list
       attr_reader   :require_url, :require_page_title
       attr_accessor :base_url
 
@@ -103,8 +110,16 @@ module Ferris
         @required_element_list ||= []
       end
 
+      def inherited(subclass)
+        subclass.required_element_list = required_element_list.dup
+      end
+
       def element(name, required: false, &block)
-        define_method(name) { |*args| instance_exec(*args, &block).tap { |el| el.keyword = name if el.respond_to?(:keyword)} }
+        define_method(name) do |*args|
+          instance_exec(*args, &block).tap do |el|
+            el.keyword = name if el.respond_to?(:keyword)
+          end
+        end
         required_element_list << name.to_sym if required
       end
     end
