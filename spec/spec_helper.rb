@@ -1,7 +1,6 @@
 require_relative '../lib/ferris'
 require_relative 'support/site'
 require 'coveralls'
-require 'pry'
 
 Coveralls.wear!
 
