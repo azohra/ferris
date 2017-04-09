@@ -6,13 +6,11 @@ require 'pry'
 Coveralls.wear!
 
 Ferris.base_url = 'https://en.wikipedia.org'
+Ferris.browser = Watir::Browser.new :chrome
 
 RSpec.configure do |config|
-  config.before(:each) do
-    Ferris.browser = Watir::Browser.new :chrome
-  end
 
-  config.after(:each) do |_scenario|
+  config.after :suite do
     Ferris.browser.close
   end
 end
