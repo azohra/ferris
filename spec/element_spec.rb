@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Ferris Elements' do
+describe 'Ferris Element' do
   let(:site) { TestSite.new }
 
   it 'can call keyword' do

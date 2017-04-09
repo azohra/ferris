@@ -1,6 +1,6 @@
 module Watir
   class Element
-    def do(v)
+    def do(v = nil)
       case self
       when Watir::Radio
         set if v
@@ -15,13 +15,11 @@ module Watir
       end
     end
 
-    def do!(v)
+    def do!(v = nil)
       case self
       when Watir::CheckBox, Watir::Radio
         browser.execute_script("arguments[0].checked = #{v ? 'true' : 'false'};", self)
-      when Watir::Select
-        browser.execute_script("arguments[0].val('#{v}');", self)
-      when Watir::TextField, Watir::TextArea, Watir::Input
+      when Watir::Select, Watir::TextField, Watir::TextArea, Watir::Input
         browser.execute_script("arguments[0].value = '#{v}';", self)
       else
         browser.execute_script('arguments[0].click();', self)

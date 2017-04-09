@@ -22,9 +22,9 @@ class Home < Ferris::Page
   element(:checkbox_3) { browser.checkbox(id: 'checkbox3') }
 
   # Radio Buttons
-  element(:radio_1) { browser.checkbox(id: 'radio1') }
-  element(:radio_2) { browser.checkbox(id: 'radio2') }
-  element(:radio_3) { browser.checkbox(id: 'radio3') }
+  element(:radio_1) { browser.radio(id: 'radio1') }
+  element(:radio_2) { browser.radio(id: 'radio2') }
+  element(:radio_3) { browser.radio(id: 'radio3') }
 
   # Text Area
   element(:text_area) { browser.textarea(id: 'textarea') }

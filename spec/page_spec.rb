@@ -16,6 +16,6 @@ describe Ferris::Page do
   end
 
   it 'can retrieve its url' do
-    expect(site.home_page.url).to eql "file://#{ENV['PWD']}/spec/index.html"
+    expect(site.home_page.url).to eql "file://#{ENV['PWD']}/spec/support/index.html"
   end
 end
