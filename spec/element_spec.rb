@@ -3,19 +3,27 @@ require 'spec_helper'
 describe 'Ferris Elements' do
   let(:site) { TestSite.new }
 
-  it 'keyword' do
-    expect(site.home_page.input.text.keyword).to eq(:text)
+  it 'can call keyword' do
+    expect(site.home_page.text_field.keyword).to eq(:text_field)
   end
 
-  it 'do' do
+  it 'can call do' do
     site.home_page.visit
-    site.home_page.input.text.do 'Apple'
-    expect(site.home_page.input.text.value).to eql 'Apple'
+    site.home_page.text_field.do 'Apple'
+    expect(site.home_page.text_field.value).to eql 'Apple'
   end
 
-  it 'do!' do
+  it 'can call do!' do
     site.home_page.visit
-    site.home_page.input.text.do! 'Apple'
-    expect(site.home_page.input.text.value).to eql 'Apple'
+    site.home_page.text_field.do! 'Apple'
+    expect(site.home_page.text_field.value).to eql 'Apple'
+  end
+
+  it 'can locate from a region' do
+    expect(site.header.title).to be_a Watir::Element
+  end
+
+  it 'can locate from a page' do
+    expect(site.home_page.text_field).to be_a Watir::Element
   end
 end

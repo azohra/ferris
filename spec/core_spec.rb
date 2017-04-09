@@ -3,27 +3,26 @@ require 'benchmark'
 
 describe Ferris::Core do
   let(:site) { TestSite.new }
-  let(:input_region_fields) { Inputs.new }
+  let(:data) { FormData.new }
+  let(:expected_result) { data.to_hash }
+  let(:found_result) { Hash[expected_result.map { |k, _v| [k, site.home_page.send(k).value] }] }
 
-  it 'do' do
+  it 'can call do' do
     site.home_page.visit
-    site.home_page.input.do(input_region_fields)
-    expect(site.home_page.input.text.value).to eql 'Apple'
+    site.home_page.do(data)
+    expect(found_result).to include expected_result
   end
 
-  it 'do!' do
+  it 'can call do!' do
     site.home_page.visit
-    site.home_page.input.do!(input_region_fields)
-    expect(site.home_page.input.text.value).to eql 'Apple'
+    site.home_page.do!(data)
+    expect(found_result).to include expected_result
   end
 
-  it 'do! better than do' do
-    site.home_page.visit
-    watir = Benchmark.measure { site.home_page.input.do(input_region_fields) }
-    site.home_page.visit
-    ferris = Benchmark.measure { site.home_page.input.do!(input_region_fields) }
-    puts "Result: #{ferris.real} vs #{watir.real}"
+  it 'hopes do! is better than do' do
+    watir = Benchmark.measure { site.home_page.visit.do(data) }
+    ferris = Benchmark.measure { site.home_page.visit.do!(data) }
+    # puts "Result: #{ferris.real} vs #{watir.real}"
     expect(ferris.real).to be < watir.real
   end
-
 end

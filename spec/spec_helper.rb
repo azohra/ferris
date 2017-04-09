@@ -1,9 +1,9 @@
 require 'ferris'
 require 'coveralls'
 require 'watir_model'
+require 'pry'
 require_relative 'support/site'
-require_relative 'support/data/inputs'
-
+require_relative 'support/data/form_data'
 
 Coveralls.wear!
 

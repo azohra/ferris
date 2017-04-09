@@ -3,15 +3,19 @@ require 'spec_helper'
 describe Ferris::Region do
   let(:site) { TestSite.new }
 
-  it 'exists?' do
-    expect(site.home_page.input).to respond_to(:exists?)
+  it 'is the correct object type' do
+    expect(site.header).to be_a Ferris::Region
   end
 
-  it 'present?' do
-    expect(site.home_page.input).to respond_to(:present?)
+  it 'can call exists?' do
+    expect(site.header).to respond_to(:exists?)
   end
 
-  it 'click' do
-    expect(site.home_page.input).not_to respond_to(:click)
+  it 'can call present?' do
+    expect(site.header).to respond_to(:present?)
+  end
+
+  it 'cannot call click' do
+    expect(site.header).not_to respond_to(:click)
   end
 end
