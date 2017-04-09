@@ -1,16 +1,18 @@
-require './spec/support/site'
+require_relative '../lib/ferris'
+require_relative 'support/site'
 require 'coveralls'
+require 'pry'
 
 Coveralls.wear!
 
-RSpec.configure do |config|
-  config.include Ferris::SiteObject
+Ferris.base_url = 'https://en.wikipedia.org'
 
+RSpec.configure do |config|
   config.before(:each) do
-    Ferris::Config.browser = Watir::Browser.new :chrome
+    Ferris.browser = Watir::Browser.new :chrome
   end
 
   config.after(:each) do |_scenario|
-    Ferris::Config.browser.close
+    Ferris.browser.close
   end
 end
