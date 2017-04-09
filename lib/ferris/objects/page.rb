@@ -1,7 +1,7 @@
 module Ferris
   class Page < Ferris::Core
 
-  attr_reader :page_url
+  attr_reader :url
 
   extend Ferris::Concepts::Regions
   extend Ferris::Concepts::Elements
@@ -9,11 +9,11 @@ module Ferris
 
   def initialize
     super
-    @page_url = Ferris.base_url + partial_url
+    @url = Ferris.base_url + partial_url
   end
 
   def visit
-    browser.goto @page_url
+    browser.goto @url
     self
   end
 
