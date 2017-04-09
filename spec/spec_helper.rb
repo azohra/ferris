@@ -1,10 +1,12 @@
-require_relative '../lib/ferris'
-require_relative 'support/site'
+require 'ferris'
 require 'coveralls'
+require 'watir_model'
+require_relative 'support/site'
+require_relative 'support/data/inputs'
+
 
 Coveralls.wear!
 
-Ferris.base_url = 'https://en.wikipedia.org'
 Ferris.browser = Watir::Browser.new :chrome
 
 RSpec.configure do |config|

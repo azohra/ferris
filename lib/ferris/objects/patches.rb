@@ -11,7 +11,7 @@ module Watir
       when Watir::Button
         click
       when Watir::TextField, Watir::TextArea
-        set v if v
+        set v
       else
         click
       end
@@ -19,19 +19,14 @@ module Watir
 
     def do!(v)
       case self
-      when Watir::Radio
-        fire_event :click if set? ^ v
-      when Watir::CheckBox
-        fire_event :click if checked? ^ v
+      when Watir::CheckBox, Watir::Radio
+        browser.execute_script("arguments[0].checked = #{v ? 'true' : 'false'};", self)
       when Watir::Select
-        browser.execute_script("$(arguments[0]).val('#{v}');", self)
-      when Watir::Button
-        send_keys :enter
+        browser.execute_script("arguments[0].val('#{v}');", self)
       when Watir::TextField, Watir::TextArea
-        clear
-        send_keys v
+        browser.execute_script("arguments[0].value = '#{v}';", self)
       else
-        fire_event :click
+        browser.execute_script("arguments[0].click();", self)
       end
     end
   end

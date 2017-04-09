@@ -1,7 +1,85 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/jcommu/Development/ferris/ferris_watir/spec/element_spec.rb": [
+        1,
+        null,
+        1,
+        4,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/jcommu/Development/ferris/ferris_watir/spec/page_spec.rb": [
+        1,
+        null,
+        1,
+        5,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/jcommu/Development/ferris/ferris_watir/spec/region_spec.rb": [
+        1,
+        null,
+        1,
+        4,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/jcommu/Development/ferris/ferris_watir/spec/site_spec.rb": [
+        1,
+        null,
+        1,
+        2,
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
     },
-    "timestamp": 1491751278
+    "timestamp": 1491771484
   }
 }
