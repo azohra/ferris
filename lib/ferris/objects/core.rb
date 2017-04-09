@@ -7,12 +7,12 @@ module Ferris
     end
 
     def do(data)
-      data.each { |k, v| send(k).do(v) }
+      data.to_hash.each { |k, v| send(k).do(v) }
       browser.send_keys :tab
     end
 
     def do!(data)
-      data.each { |k, v| send(k).do!(v) }
+      data.to_hash.each { |k, v| send(k).do!(v) }
       browser.send_keys :tab
     end
   end

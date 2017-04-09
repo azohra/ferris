@@ -1,6 +1,7 @@
-module TestSite
-  class Home < Ferris::Page
-    partial_url { '/wiki/Main_Page' }
-    title { 'Wikipedia, the free encyclopedia' }
-  end
+class Home < Ferris::Page
+  partial_url { '/index.html' }
+  title { 'HTML5 Test Page' }
+
+  region(:input, Input) { browser.section(id: 'forms') }
 end
+

@@ -1,6 +1,7 @@
-require_relative 'regions/header'
+require_relative 'regions/input'
 require_relative 'pages/home'
-class Wikipedia < Ferris::Site
-  page(:home_page, TestSite::Home)
-  region(:header, TestSite::Header) { browser.div(id: 'mw-head') }
+
+class TestSite < Ferris::Site
+  Ferris.base_url = 'file://' + ENV['PWD'] + '/spec'
+  page(:home_page, Home)
 end
