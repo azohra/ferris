@@ -8,9 +8,7 @@ module Watir
         v ? set : clear
       when Watir::Select
         select v
-      when Watir::Button
-        click
-      when Watir::TextField, Watir::TextArea
+      when Watir::TextField, Watir::TextArea, Watir::Input
         set v
       else
         click
@@ -23,10 +21,10 @@ module Watir
         browser.execute_script("arguments[0].checked = #{v ? 'true' : 'false'};", self)
       when Watir::Select
         browser.execute_script("arguments[0].val('#{v}');", self)
-      when Watir::TextField, Watir::TextArea
+      when Watir::TextField, Watir::TextArea, Watir::Input
         browser.execute_script("arguments[0].value = '#{v}';", self)
       else
-        browser.execute_script("arguments[0].click();", self)
+        browser.execute_script('arguments[0].click();', self)
       end
     end
   end
