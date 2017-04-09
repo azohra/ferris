@@ -1,6 +1,5 @@
 module Ferris
   class Region < Ferris::Core
-
     attr_reader :root
 
     extend Forwardable
@@ -13,6 +12,5 @@ module Ferris
       super
       @root = instance_exec(&blk)
     end
-
   end
 end

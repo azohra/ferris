@@ -2,16 +2,9 @@
 
 ## Synopsis
 
-An un-opinionated testing framework built on top of WATIR which provides massive power with minimal DSL. 
+An opinionated testing framework built on top of WATIR which provides massive power with minimal DSL. 
 
 ## Installation
-
-Ensure that you have the most up to date version of chromedriver installed, this can be done using brew:
-
-    $ brew update
-    $ brew install chromedriver
-    
-Or you can download it directly here : https://sites.google.com/a/chromium.org/chromedriver/downloads
 
 Add this line to your gemfile:
 
@@ -39,13 +32,19 @@ Ferris should run a number of tests against wikipedia and you should see an outp
     [Coveralls] Set up the SimpleCov formatter.
     [Coveralls] Using SimpleCov's default settings.
     
-    Wikipedia
-      can search
-      can check a region is present
-      can check a page is loaded
-      can check an elements keyword
-      can throw a .loaded? exception
-      can throw a .present? exception
+    Ferris
+      Page
+        visit
+        title
+        url
+      Region
+        exists?
+        present?
+        click
+      Element
+        set keyword
+        do
+        do!
     
-    Finished in 11.82 seconds (files took 0.39788 seconds to load)
-    6 examples, 0 failures
+    Finished in 2.98 seconds (files took 1.26 seconds to load)
+    9 examples, 0 failures
