@@ -1,6 +1,5 @@
 require 'watir'
 
-require_relative 'ferris/concepts/element_do'
 require_relative 'ferris/concepts/elements'
 require_relative 'ferris/concepts/page_attributes'
 require_relative 'ferris/concepts/pages'

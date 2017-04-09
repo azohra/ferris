@@ -16,6 +16,18 @@ describe 'Ferris' do
     it 'url' do
       expect(wiki.home_page.url).to eql 'https://en.wikipedia.org/wiki/Main_Page'
     end
+
+    it 'do' do
+      wiki.home_page.visit
+      wiki.header.do(search_term: 'Apple')
+      expect(wiki.header.search_term.value).to eql 'Apple'
+    end
+
+    it 'do!' do
+      wiki.home_page.visit
+      wiki.header.do!(search_term: 'Apple')
+      expect(wiki.header.search_term.value).to eql 'Apple'
+    end
   end
 
   context 'Region' do
@@ -49,6 +61,4 @@ describe 'Ferris' do
       expect(wiki.header.search_term.value).to eql 'Apple'
     end
   end
-
-
 end

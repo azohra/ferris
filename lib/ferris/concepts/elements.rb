@@ -6,7 +6,9 @@ module Ferris
       end
 
       def element(name, &block)
-        define_method(name) { instance_exec(&block).tap { |el| el.keyword = name } }
+        define_method(name) do
+          instance_exec(&block).tap { |el| el.keyword = name }
+        end
       end
     end
   end
