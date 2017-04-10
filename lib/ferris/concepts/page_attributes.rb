@@ -1,12 +1,13 @@
 module Ferris
   module Concepts
     module PageAttributes
-      def partial_url(&blk)
-        define_method(:partial_url) { instance_exec(&blk) }
+
+      def base_url(&blk)
+        define_method(:base_url) { instance_exec(&blk) }
       end
 
-      def verifiable_url(&blk)
-        define_method(:verifiable_url) { instance_exec(&blk) }
+      def partial_url(&blk)
+        define_method(:partial_url) { instance_exec(&blk) }
       end
 
       def title(&blk)

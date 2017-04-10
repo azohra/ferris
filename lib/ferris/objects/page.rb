@@ -8,11 +8,11 @@ module Ferris
 
     def initialize
       super
-      @url = Ferris.base_url + partial_url
+      @url = Ferris::Site.root_url + partial_url
     end
 
     def visit
-      browser.goto @url
+      browser.goto url
       self
     end
   end
