@@ -1,7 +1,7 @@
-require './spec/support/site'
 require 'coveralls'
-
 Coveralls.wear!
+
+require './spec/support/site'
 
 RSpec.configure do |config|
   config.include Ferris::SiteObject
