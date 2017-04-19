@@ -1,6 +1,7 @@
 module Ferris
   class Site < Ferris::Core
 
+    extend Ferris::Concepts::Elements
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
     extend Ferris::Concepts::PageAttributes
