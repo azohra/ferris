@@ -13,6 +13,6 @@ require_relative 'ferris/objects/patches'
 
 module Ferris
   class << self
-    attr_accessor :browser, :headless_driver, :custom, :base_url
+    attr_accessor :browser, :xvfb, :custom, :base_url
   end
 end
