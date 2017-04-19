@@ -13,6 +13,7 @@ module Ferris
 
     def visit
       browser.goto url
+      initialize_page if respond_to?(:initialize_page)
       self
     end
   end
