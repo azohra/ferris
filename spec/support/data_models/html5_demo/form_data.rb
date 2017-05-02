@@ -1,5 +1,5 @@
 # encoding: utf-8
-class FormData < WatirModel
+class HTML5DemoFormData < WatirModel
 
   key(:text_input) do
     {text_field: 'Apple',

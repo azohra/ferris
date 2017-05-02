@@ -3,7 +3,7 @@ require 'benchmark'
 
 describe Ferris::Core do
   let(:site) { TestSite.new }
-  let(:data) { FormData.new }
+  let(:data) { HTML5DemoFormData.new }
 
   context 'Text' do
 
