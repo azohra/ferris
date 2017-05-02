@@ -4,14 +4,14 @@ class Home < Ferris::Page
   
   # Inputs
   element(:text_field) { browser.text_field(id: 'input__text') }
-  element(:password) { browser.text_field(id: 'input__password') }
-  element(:website) { browser.text_field(id: 'input__webaddress') }
-  element(:email) { browser.text_field(id: 'input__emailaddress') }
-  element(:phone) { browser.text_field(id: 'input__phone') }
-  element(:search) { browser.text_field(id: 'input__search') }
-  element(:number) { browser.text_field(id: 'input__text2') }
-  element(:error) { browser.text_field(id: 'input__text3') }
-  element(:valid) { browser.text_field(id: 'input__text4') }
+  element(:password)   { browser.text_field(id: 'input__password') }
+  element(:website)    { browser.text_field(id: 'input__webaddress') }
+  element(:email)      { browser.text_field(id: 'input__emailaddress') }
+  element(:phone)      { browser.text_field(id: 'input__phone') }
+  element(:search)     { browser.text_field(id: 'input__search') }
+  element(:number)     { browser.text_field(id: 'input__text2') }
+  element(:error)      { browser.text_field(id: 'input__text3') }
+  element(:valid)      { browser.text_field(id: 'input__text4') }
 
   # Select Lists
   element(:select_list) { browser.select_list(id: 'select') }
@@ -32,7 +32,7 @@ class Home < Ferris::Page
   # Buttons
   element(:submit_btn) { browser.button(type: 'submit') }
   element(:button_btn) { browser.button(type: 'button') }
-  element(:reset_btn) { browser.button(type: 'reset') }
+  element(:reset_btn)  { browser.button(type: 'reset') }
 
 
 end
