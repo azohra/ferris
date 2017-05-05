@@ -6,9 +6,9 @@ module Ferris
     extend Ferris::Concepts::Elements
     extend Ferris::Concepts::PageAttributes
 
-    def initialize
-      super
-      @url = Ferris::Site.root_url + partial_url
+    def initialize(opts = {})
+      super()
+      @url = opts[:site_url] + partial_url
     end
 
     def visit
