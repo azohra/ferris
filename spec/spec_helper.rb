@@ -2,8 +2,8 @@ require 'ferris'
 require 'coveralls'
 require 'watir_model'
 require 'pry'
-require_relative 'support/site_models/html5_demo/site'
-require_relative 'support/data_models/html5_demo/form_data'
+require_relative 'support/sites/compliance/site_map'
+require_relative 'support/sites/responsive/site_map'
 
 Coveralls.wear!
 

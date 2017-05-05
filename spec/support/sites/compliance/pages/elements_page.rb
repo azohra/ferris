@@ -1,7 +1,7 @@
-class Home < Ferris::Page
+class ElementsPage < Ferris::Page
   partial_url { '/index.html' }
   title { 'HTML5 Test Page' }
-  
+
   # Inputs
   element(:text_field) { browser.text_field(id: 'input__text') }
   element(:password)   { browser.text_field(id: 'input__password') }
@@ -33,6 +33,4 @@ class Home < Ferris::Page
   element(:submit_btn) { browser.button(type: 'submit') }
   element(:button_btn) { browser.button(type: 'button') }
   element(:reset_btn)  { browser.button(type: 'reset') }
-
-
 end
