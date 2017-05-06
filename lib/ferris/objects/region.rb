@@ -1,6 +1,9 @@
 module Ferris
-  class Region < Ferris::Core
-    attr_reader :root
+  class Region
+
+    attr_reader :root, :browser
+
+    include Ferris::Concepts::FormFilling
 
     extend Forwardable
     extend Ferris::Concepts::Regions
@@ -8,8 +11,8 @@ module Ferris
 
     def_delegators :root, :exists?, :present?
 
-    def initialize(&blk)
-      super
+    def initialize(browser, &blk)
+      @browser = browser
       @root = instance_exec(&blk)
     end
   end

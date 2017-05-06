@@ -1,4 +1,5 @@
 class StaticPage < Ferris::Page
+
   partial_url { '/pages.html' }
   title { 'RegistrationHacks' }
 

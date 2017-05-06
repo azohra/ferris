@@ -1,4 +1,5 @@
 class ElementsPage < Ferris::Page
+
   partial_url { '/index.html' }
   title { 'HTML5 Test Page' }
 

@@ -1,16 +1,18 @@
 module Ferris
-  class Site < Ferris::Core
+  class Site
+
+    attr_reader :url, :browser
+
+    include Ferris::Concepts::FormFilling
+
     extend Ferris::Concepts::Elements
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
-    extend Ferris::Concepts::PageAttributes
 
-    attr_accessor :url
-
-    def initialize(opts = {})
-      raise(Ferris::Exception::MissingBaseUrl) unless opts.key?(:base_url)
-      self.url = opts[:base_url]
-      super()
+    def initialize(base_url)
+      raise(Ferris::Exception::MissingBrowser) unless Ferris.browser
+      @url = base_url
+      @browser = Ferris.browser
     end
 
     def visit
