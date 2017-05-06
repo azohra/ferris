@@ -1,8 +1,8 @@
 module Ferris
   module Exception
-    class MissingBaseUrl < StandardError
+    class MissingBrowser < StandardError
       def message
-        'You must provide a base url when instantiating a Ferris::Site'
+        'You must assign a Watir browser to Ferris.browser'
       end
     end
   end

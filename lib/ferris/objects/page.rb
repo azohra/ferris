@@ -1,14 +1,17 @@
 module Ferris
-  class Page < Ferris::Core
-    attr_reader :url
+  class Page
+
+    attr_reader :url, :browser
+
+    include Ferris::Concepts::FormFilling
 
     extend Ferris::Concepts::Regions
     extend Ferris::Concepts::Elements
     extend Ferris::Concepts::PageAttributes
 
-    def initialize(opts = {})
-      super()
-      @url = opts[:site_url] + partial_url
+    def initialize(browser, site_url)
+      @url = site_url + partial_url
+      @browser = browser
     end
 
     def visit
@@ -16,5 +19,7 @@ module Ferris
       initialize_page if respond_to?(:initialize_page)
       self
     end
+
+
   end
 end

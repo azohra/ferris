@@ -1,5 +1,6 @@
 module Watir
   class Element
+
     def do(v = nil)
       case self
       when Watir::Radio
@@ -25,5 +26,6 @@ module Watir
         browser.execute_script('arguments[0].click();', self)
       end
     end
+
   end
 end
