@@ -11,8 +11,8 @@ module Ferris
 
     def initialize(url)
       raise(Ferris::Exception::MissingBrowser) unless Ferris.browser
-      self.url = url
-      self.browser = Ferris.browser
+      @url = url
+      @browser = Ferris.browser
     end
 
     def visit
