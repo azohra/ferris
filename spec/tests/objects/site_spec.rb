@@ -16,6 +16,11 @@ describe Ferris::Site do
     it 'can retrieve its url' do
       expect(compliance_site.url).to eql "file://#{ENV['PWD']}/spec/support/data/compliance_site"
     end
+
+    it 'can retrieve its url' do
+      expect(responsive_site.url).to eql "file://#{ENV['PWD']}/spec/support/data/responsive_site"
+    end
+
   end
 
   describe 'Responsive Site' do

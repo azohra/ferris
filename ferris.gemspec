@@ -15,6 +15,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency             'watir', '~> 6.1'
+  spec.add_development_dependency 'knapsack_pro'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'rubocop'

@@ -17,7 +17,7 @@ module Ferris
 
     def visit
       browser.goto base_url
-      initialize_site if respond_to?(:initialize_site)
+      ensure_site_loaded if respond_to?(:ensure_site_loaded)
       self
     end
   end
