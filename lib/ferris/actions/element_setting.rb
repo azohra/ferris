@@ -8,7 +8,11 @@ module Watir
       when Watir::CheckBox
         v ? set : clear
       when Watir::Select
-        select v
+        begin 
+          select v
+        rescue Watir::Exception::NoValueFoundException
+          select_value v
+        end  
       when Watir::TextField, Watir::TextArea, Watir::Input
         set v
       else
@@ -17,6 +21,7 @@ module Watir
     end
 
     def do!(v = nil)
+      self.wait_for_exists
       case self
       when Watir::CheckBox, Watir::Radio
         browser.execute_script("arguments[0].checked = #{v ? 'true' : 'false'};", self)
