@@ -16,10 +16,10 @@ module Ferris
 
     def visit
       browser.goto url
-      initialize_page if respond_to?(:initialize_page)
+      ensure_site_loaded if respond_to?(:ensure_site_loaded)
+      ensure_page_loaded if respond_to?(:ensure_page_loaded)
       self
     end
-
 
   end
 end
