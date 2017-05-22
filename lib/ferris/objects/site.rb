@@ -14,6 +14,10 @@ module Ferris
       @url = url
       @browser = Ferris.browser
     end
+
+    def site
+      self
+    end
     
     def visit
       browser.goto url
