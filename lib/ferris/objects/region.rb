@@ -14,9 +14,12 @@ module Ferris
     def initialize(browser, &blk)
       @browser = browser
       @root = instance_exec(&blk)
-      ensure_site_loaded if respond_to?(:ensure_site_loaded)
-      ensure_page_loaded if respond_to?(:ensure_page_loaded)
-      ensure_region_loaded if respond_to?(:ensure_region_loaded)
     end
+
+    def load
+      ensure_loaded if respond_to?(:ensure_loaded)
+      self
+    end
+
   end
 end
