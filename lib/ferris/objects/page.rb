@@ -1,7 +1,7 @@
 module Ferris
   class Page
 
-    attr_reader :url, :browser
+    attr_reader :url, :browser, :site
 
     include Ferris::Concepts::FormFilling
 
