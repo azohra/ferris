@@ -16,6 +16,6 @@ require_relative 'ferris/objects/region'
 
 module Ferris
   class << self
-    attr_accessor :browser, :xvfb, :custom
+    attr_accessor :browser, :xvfb, :session
   end
 end
