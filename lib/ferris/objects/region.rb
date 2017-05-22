@@ -1,7 +1,7 @@
 module Ferris
   class Region
 
-    attr_reader :root, :browser
+    attr_reader :root, :browser, :site
 
     include Ferris::Concepts::FormFilling
 
@@ -11,8 +11,9 @@ module Ferris
 
     def_delegators :root, :exists?, :present?
 
-    def initialize(browser, &blk)
+    def initialize(browser, site, &blk)
       @browser = browser
+      @site = site
       @root = instance_exec(&blk)
     end
 
