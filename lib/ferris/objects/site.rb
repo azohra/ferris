@@ -14,7 +14,7 @@ module Ferris
       @url = url
       @browser = Ferris.browser
     end
-
+    
     def visit
       browser.goto url
       ensure_loaded if respond_to?(:ensure_loaded)
