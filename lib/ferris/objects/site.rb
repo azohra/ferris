@@ -9,7 +9,7 @@ module Ferris
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
 
-    def initialize(url)
+   def initialize(url)
       raise(Ferris::Exception::MissingBrowser) unless Ferris.browser
       @url = url
       @browser = Ferris.browser
