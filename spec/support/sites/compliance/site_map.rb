@@ -8,6 +8,6 @@ class ComplianceSite < Ferris::Site
   region(:elements_header, ElementsHeaderRegion) { browser.header }
   element(:my_element) { browser.body }
 
-
-
 end
+
+
