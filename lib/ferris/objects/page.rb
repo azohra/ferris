@@ -1,6 +1,5 @@
 module Ferris
   class Page
-
     attr_reader :url, :browser, :site
 
     include Ferris::Concepts::FormFilling
@@ -21,6 +20,5 @@ module Ferris
       ensure_loaded if respond_to?(:ensure_page_loaded)
       self
     end
-
   end
 end

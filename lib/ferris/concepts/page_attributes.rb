@@ -8,7 +8,6 @@ module Ferris
       def title(&blk)
         define_method(:title) { instance_exec(&blk) }
       end
-      
     end
   end
 end
