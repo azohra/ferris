@@ -18,3 +18,4 @@ module Ferris
     end
   end
 end
+
