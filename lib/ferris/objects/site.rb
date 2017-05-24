@@ -8,14 +8,15 @@ module Ferris
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
 
-    def initialize(browser:, url:)
+    def initialize(url:)
+      raise(Ferris::Exception::MissingBrowser) unless Ferris.browser
       @url = url
-      @browser = browser
+      @browser = Ferris.browser
     end
 
     def site
       self
-    end
+    env
 
     def visit
       browser.goto url
