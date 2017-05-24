@@ -1,7 +1,7 @@
 module Ferris
   class Site
 
-    attr_accessor :url, :browser
+    attr_reader :url, :browser
 
     include Ferris::Concepts::FormFilling
 
@@ -9,13 +9,17 @@ module Ferris
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
     
-    def initialize(browser: b, url: u)
-      self.url= u
-      self.browser= b
+    def initialize(browser:, url:)
+      @url= url
+      @browser= browser
+    end
+    
+    def site
+      self
     end
     
     def visit
-      self.browser.goto url
+      browser.goto url
       ensure_loaded if respond_to?(:ensure_loaded)
       self
     end

@@ -3,12 +3,12 @@ module Ferris
     module Regions
       def regions(name, klass, &blk)
         define_method(name) do
-          instance_exec(&blk).map { |root| klass.new(self.site, root) }
+          instance_exec(&blk).map { |block| klass.new(site, block) }
         end
       end
 
       def region(name, klass, &blk)
-        define_method(name) { klass.new(self.site, &blk) }
+        define_method(name) { klass.new(site, &blk) }
       end
     end
   end

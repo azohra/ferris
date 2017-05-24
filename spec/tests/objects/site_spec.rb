@@ -1,8 +1,8 @@
 require_relative '../../spec_helper'
 
 describe Ferris::Site do
-  let(:responsive_site) { ResponsiveSite.new("file://#{ENV['PWD']}/spec/support/data/responsive_site") }
-  let(:compliance_site) { ComplianceSite.new("file://#{ENV['PWD']}/spec/support/data/compliance_site") }
+  let(:responsive_site) { ResponsiveSite.new(browser: BROWSER, url: "file://#{ENV['PWD']}/spec/support/data/responsive_site") }
+  let(:compliance_site) { ComplianceSite.new(browser: BROWSER, url: "file://#{ENV['PWD']}/spec/support/data/compliance_site") }
 
   describe 'Compliance Site' do
     it 'is the correct object type' do

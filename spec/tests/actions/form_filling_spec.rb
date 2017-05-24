@@ -3,7 +3,8 @@ require 'benchmark'
 
 shared_examples 'Form Filling' do |inputs, outputs, lookup|
 
-  let(:compliance_site) { ComplianceSite.new("file://#{ENV['PWD']}/spec/support/data/compliance_site") }
+  let(:compliance_site) { ComplianceSite.new(browser: BROWSER, url: "file://#{ENV['PWD']}/spec/support/data/compliance_site") }
+
   let(:data_set) { HTML5DemoFormData.new }
   let(:form_data) { data_set.send(inputs) }
   let(:expected_output) { data_set.send(outputs) }

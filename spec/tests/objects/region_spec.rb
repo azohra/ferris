@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
 
 describe Ferris::Region do
-  let(:compliance_site) { ComplianceSite.new("file://#{ENV['PWD']}/spec/support/data/compliance_site") }
+  let(:compliance_site) { ComplianceSite.new(browser: BROWSER, url: "file://#{ENV['PWD']}/spec/support/data/compliance_site") }
 
   it 'is the correct object type' do
     expect(compliance_site.elements_header).to be_a Ferris::Region
