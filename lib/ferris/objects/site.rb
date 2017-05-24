@@ -16,7 +16,7 @@ module Ferris
 
     def site
       self
-    env
+    end
 
     def visit
       browser.goto url

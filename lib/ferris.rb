@@ -14,4 +14,7 @@ require_relative 'ferris/objects/page'
 require_relative 'ferris/objects/region'
 
 module Ferris
+  class << self
+    attr_accessor :browser
+  end
 end
