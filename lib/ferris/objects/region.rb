@@ -1,6 +1,5 @@
 module Ferris
   class Region
-
     attr_reader :root, :browser, :site
 
     include Ferris::Concepts::FormFilling
@@ -21,6 +20,5 @@ module Ferris
       ensure_loaded if respond_to?(:ensure_loaded)
       self
     end
-
   end
 end

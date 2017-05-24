@@ -12,10 +12,9 @@ module Ferris
       private
 
       def fill_action(data, method = :do)
-        data.to_hash.each {|k, v| send(k).send(method, v)}
+        data.to_hash.each { |k, v| send(k).send(method, v) }
         browser.send_keys :tab
       end
     end
   end
 end
-

@@ -12,7 +12,5 @@ require_relative 'ferris/objects/site'
 require_relative 'ferris/objects/page'
 require_relative 'ferris/objects/region'
 
-
 module Ferris
-
 end
