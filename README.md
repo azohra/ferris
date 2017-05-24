@@ -1,10 +1,19 @@
-# Ferris [![Build Status](https://travis-ci.org/automation-wizards/ferris.svg?branch=master)](https://travis-ci.org/automation-wizards/ferris) [![Coverage Status](https://coveralls.io/repos/github/automation-wizards/ferris/badge.svg?branch=master)](https://coveralls.io/github/automation-wizards/ferris?branch=master)
+# Ferris
+ [![Build Status](https://travis-ci.org/automation-wizards/ferris.svg?branch=master)](https://travis-ci.org/automation-wizards/ferris)
+ [![Coverage Status](https://coveralls.io/repos/github/automation-wizards/ferris/badge.svg?branch=master)](https://coveralls.io/github/automation-wizards/ferris?branch=master)
 
 ## Synopsis
 
 An opinionated testing framework built on top of Watir which provides massive power with minimal DSL. 
 
 ## Installation
+
+Ensure that you have the most up to date version of chromedriver installed, this can be done using brew:
+
+    $ brew update
+    $ brew install chromedriver
+
+Or you can download it directly here : https://sites.google.com/a/chromium.org/chromedriver/downloads
 
 Add this line to your gemfile:
 
@@ -13,7 +22,7 @@ Add this line to your gemfile:
 And install it using:
 
     $ bundle install
-    
+
 To use this library in your code:
 
     require 'ferris'
@@ -26,7 +35,7 @@ Run:
 
     $ bundle install
     $ bundle exec rspec
-    
+
 Ferris should run a number of tests against wikipedia and you should see an output like this in your terminal:
 
         [Coveralls] Set up the SimpleCov formatter.
@@ -81,5 +90,3 @@ Ferris should run a number of tests against wikipedia and you should see an outp
         
         Finished in 9.4 seconds (files took 1.3 seconds to load)
         30 examples, 0 failures
-        
-
