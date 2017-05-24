@@ -35,7 +35,4 @@ class ElementsPage < Ferris::Page
   element(:button_btn) { browser.button(type: 'button') }
   element(:reset_btn)  { browser.button(type: 'reset') }
 
-  def ensure_loaded
-    puts 'I am a page'
-  end
 end

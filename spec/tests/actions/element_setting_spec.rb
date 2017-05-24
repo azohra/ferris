@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
 
 describe 'Monkey Patches' do
-  let(:compliance_site) { ComplianceSite.new(browser: BROWSER, url: "file://#{ENV['PWD']}/spec/support/data/compliance_site") }
+  let(:compliance_site) { ComplianceSite.new(url: "file://#{ENV['PWD']}/spec/support/data/compliance_site") }
   
   context 'Watir Elements' do
     it 'can call do' do
