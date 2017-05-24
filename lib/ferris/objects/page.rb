@@ -9,15 +9,15 @@ module Ferris
     extend Ferris::Concepts::Elements
     extend Ferris::Concepts::PageAttributes
 
-    def initialize(browser, site)
+    def initialize(site)
       @site = site
-      @url = @site.url + partial_url
-      @browser = browser
+      @browser = site.browser
+      @url = site.url + partial_url
     end
 
     def visit
-      browser.goto url
-      @site.ensure_loaded if @site.respond_to?(:ensure_loaded)
+      site.browser.goto url
+      site.ensure_loaded if site.respond_to?(:ensure_loaded)
       ensure_loaded if respond_to?(:ensure_page_loaded)
       self
     end

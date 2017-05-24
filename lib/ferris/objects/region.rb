@@ -11,9 +11,9 @@ module Ferris
 
     def_delegators :root, :exists?, :present?
 
-    def initialize(browser, site, &blk)
-      @browser = browser
+    def initialize(site, &blk)
       @site = site
+      @browser = site.browser
       @root = instance_exec(&blk)
     end
 
