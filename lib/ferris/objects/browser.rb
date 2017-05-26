@@ -19,13 +19,14 @@ module Ferris
                      password_manager: :password_manager_enabled }.freeze
 
       def start(**keyword_args)
+        b = keyword_args.fetch(:browser, :chrome)
         @switches = []
         @prefs = { profile: { managed_default_content_settings: {} } }
         keyword_args.each do |k, v|
           add_switch(k, v) if SWITCH_MAP.include?(k) && v  # dont write false switches
           add_pref(k, v)   if PREF_MAP.include?(k)         # write false prefs
         end
-        @browser = Watir::Browser.new(:chrome, switches: @switches, prefs: @prefs)
+        @browser = Watir::Browser.new(b, switches: @switches, prefs: @prefs)
         maximize
       end
 
