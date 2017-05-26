@@ -1,6 +1,6 @@
 module Ferris
-  class Site
-    attr_reader :url, :browser
+  module Site
+    attr_reader :url, :watir
 
     include Ferris::Concepts::FormFilling
 
@@ -8,10 +8,9 @@ module Ferris
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
 
-    def initialize(url:)
-      raise(Ferris::Exception::MissingBrowser) unless Ferris.browser
+    def initialize(browser: Ferris::Browser.browser, url:)
       @url = url
-      @browser = Ferris.browser
+      @watir = browser
     end
 
     def site
@@ -19,7 +18,7 @@ module Ferris
     end
 
     def visit
-      browser.goto url
+      watir.goto url
       ensure_loaded if respond_to?(:ensure_loaded)
       self
     end
