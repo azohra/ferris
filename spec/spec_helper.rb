@@ -7,8 +7,9 @@ require 'pry'
 require_relative 'support/site_map'
 
 Watir.default_timeout = 1
-Ferris.browser = Watir::Browser.new :chrome
+Ferris::Browser.start
 
 RSpec.configure do |config|
   config.alias_it_should_behave_like_to :it_supports, ''
+  config.after(:suite) {Ferris::Browser.close}
 end
