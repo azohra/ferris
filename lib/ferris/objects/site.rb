@@ -1,5 +1,5 @@
 module Ferris
-  module Site
+  class Site
     attr_reader :url, :watir
 
     include Ferris::Concepts::FormFilling
