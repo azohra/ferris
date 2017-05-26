@@ -29,7 +29,7 @@ module Ferris
           add_pref(k, v)   if PREF_MAP.include?(k)         # write false prefs
         end
         @browser = Watir::Browser.new(:chrome, switches: @switches, prefs: @prefs)
-        browser.maximize
+        maximize
       end
 
       def stop

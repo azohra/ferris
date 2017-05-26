@@ -1,6 +1,6 @@
 module Ferris
   class Site
-    attr_reader :url, :watir
+    attr_reader :url, :browser
 
     include Ferris::Concepts::FormFilling
 
@@ -10,7 +10,7 @@ module Ferris
 
     def initialize(browser: Ferris::Browser.browser, url:)
       @url = url
-      @watir = browser
+      @browser = browser
     end
 
     def site
@@ -18,7 +18,7 @@ module Ferris
     end
 
     def visit
-      watir.goto url
+      browser.goto url
       ensure_loaded if respond_to?(:ensure_loaded)
       self
     end

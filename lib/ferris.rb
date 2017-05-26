@@ -9,10 +9,10 @@ require_relative 'ferris/concepts/page_attributes'
 require_relative 'ferris/concepts/pages'
 require_relative 'ferris/concepts/regions'
 
+require_relative 'ferris/objects/browser'
 require_relative 'ferris/objects/site'
 require_relative 'ferris/objects/page'
 require_relative 'ferris/objects/region'
 
 module Ferris
-
 end
