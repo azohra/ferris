@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
 
 describe 'Ferris Element' do
-  let(:compliance_site) { ComplianceSite.new(url: "file://#{ENV['PWD']}/spec/support/data/compliance_site") }
+  let(:compliance_site) { ComplianceSite.new(url: BASE_URL) }
 
   it 'responds to keyword' do
     expect(compliance_site.elements_page.text_field).to respond_to :keyword

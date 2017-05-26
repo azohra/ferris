@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
 
 describe Ferris::Page do
-  let(:compliance_site) { ComplianceSite.new(url: "file://#{ENV['PWD']}/spec/support/data/compliance_site") }
+  let(:compliance_site) { ComplianceSite.new(url: BASE_URL) }
 
   it 'is the correct object type' do
     expect(compliance_site.elements_page).to be_a Ferris::Page
@@ -24,6 +24,6 @@ describe Ferris::Page do
   end
 
   it 'can retrieve its url' do
-    expect(compliance_site.elements_page.url).to eql "file://#{ENV['PWD']}/spec/support/data/compliance_site/index.html"
+    expect(compliance_site.browser.url).to eql compliance_site.elements_page.url
   end
 end

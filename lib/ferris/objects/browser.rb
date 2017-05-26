@@ -1,21 +1,18 @@
-#  @example: Ferris::Browser.start(geolocation: 64,
-#                                   password_manager: false,
-#                                   headless: true,
-#                                   ignore_ssl_errors: true,
-#                                   profile: '/tmp/user1',
-#                                   size: '1900x1200',
-#                                   user_agent: 'testing_automation')
-
 module Ferris
   module Browser
     class << self
       attr_reader :browser
 
-      SWITCH_MAP = { headless: '--headless',
-                     cpu_only: '--disable-gpu',
-                     profile: 'user-data-dir=****',
-                     size: '--window-size=****',
-                     user_agent: '--user-agent=****',
+      CAPS_MAP   = { browser: :browser_name,
+                     version: :version,
+                     os:      :platform,
+                     name:    :name }.freeze
+
+      SWITCH_MAP = { headless:          '--headless',
+                     cpu_only:          '--disable-gpu',
+                     profile:           'user-data-dir=****',
+                     size:              '--window-size=****',
+                     user_agent:        '--user-agent=****',
                      ignore_ssl_errors: '--ignore-certificate-errors' }.freeze
 
       PREF_MAP   = { geolocation: :managed_default_content_settings,
@@ -30,6 +27,13 @@ module Ferris
         end
         @browser = Watir::Browser.new(:chrome, switches: @switches, prefs: @prefs)
         maximize
+      end
+
+      def remote(**keyword_args)
+        raise 'You must provide a hub url' unless keyword_args.include?(:hub)
+        @caps = Selenium::WebDriver::Remote::Capabilities.new
+        keyword_args.each { |k, v| add_capability(k, v) if CAPS_MAP.include?(k) }
+        @browser = Watir::Browser.new(:remote, url: keyword_args[:hub], desired_capabilities: @caps)
       end
 
       def stop
@@ -51,6 +55,10 @@ module Ferris
       end
 
       private
+
+      def add_capability(k, v)
+        @caps.send("#{CAPS_MAP[k]}=", v)
+      end
 
       def add_pref(k, v)
         case k
