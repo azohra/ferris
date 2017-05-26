@@ -1,9 +1,11 @@
 AllCops:
   Exclude:
     - 'spec/**/*'
-    - 'lib/ferris/objects/patches.rb'
+    - 'lib/ferris/actions/element_setting.rb'
 
 Style/Documentation:
   Exclude:
     - 'lib/**/*'
 
+Metrics/LineLength:
+  Max: 100
