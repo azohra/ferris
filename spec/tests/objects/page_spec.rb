@@ -26,4 +26,9 @@ describe Ferris::Page do
   it 'can retrieve its url' do
     expect(compliance_site.elements_page.url).to eql "file://#{ENV['PWD']}/spec/support/data/compliance_site/index.html"
   end
+
+  it 'caches itself when called with a bang!' do
+    expect(compliance_site.elements_page!).to eq(compliance_site.elements_page!)
+  end
+
 end
