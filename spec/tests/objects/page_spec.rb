@@ -26,4 +26,9 @@ describe Ferris::Page do
   it 'can retrieve its url' do
     expect(compliance_site.browser.url).to eql compliance_site.elements_page.url
   end
+
+  it 'caches itself when called with a bang!' do
+    expect(compliance_site.elements_page!).to eq(compliance_site.elements_page!)
+  end
+
 end
