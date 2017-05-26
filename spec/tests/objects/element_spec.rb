@@ -23,4 +23,8 @@ describe 'Ferris Element' do
     expect(compliance_site.my_element).to be_a Watir::Element
   end
 
+  it 'caches itself when called with a bang!' do
+    expect(compliance_site.my_element!).to eq(compliance_site.my_element!)
+  end
+  
 end
