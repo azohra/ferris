@@ -19,4 +19,8 @@ describe Ferris::Region do
     expect(compliance_site.elements_header).not_to respond_to :click
   end
 
+  it 'caches itself when called with a bang!' do
+    expect(compliance_site.elements_header!).to eq(compliance_site.elements_header!)
+  end
+
 end
