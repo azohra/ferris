@@ -1,19 +1,18 @@
 require_relative '../../spec_helper'
 
 describe 'Monkey Patches' do
-  let(:compliance_site) { ComplianceSite.new(url: BASE_URL) }
+
+  before(:all) do
+    @website = Website.new(url: BASE_URL)
+  end
   
   context 'Watir Elements' do
     it 'can call do' do
-      compliance_site.elements_page.visit
-      compliance_site.elements_page.text_field.do 'Apple'
-      expect(compliance_site.elements_page.text_field.value).to eql 'Apple'
+      expect(@website.elements_page.text_field).to respond_to :do
     end
 
     it 'can call do!' do
-      compliance_site.elements_page.visit
-      compliance_site.elements_page.text_field.do! 'Apple'
-      expect(compliance_site.elements_page.text_field.value).to eql 'Apple'
+      expect(@website.elements_page.text_field).to respond_to :do!
     end
 
   end

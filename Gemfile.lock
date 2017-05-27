@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    ferris_watir (0.2.0)
+    ferris_watir (1.0.0)
       watir (~> 6.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.3.0)
-    childprocess (0.6.3)
+    childprocess (0.7.0)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.1)
     coveralls (0.8.20)
@@ -53,7 +53,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.1)
     rubyzip (1.2.1)
-    selenium-webdriver (3.3.0)
+    selenium-webdriver (3.4.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
