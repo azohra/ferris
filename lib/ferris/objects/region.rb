@@ -14,10 +14,6 @@ module Ferris
       @browser = browser
       @root = root ? root : instance_exec(&blk)
     end
-
-    def load
-      ensure_loaded if respond_to?(:ensure_loaded)
-      self
-    end
+    
   end
 end
