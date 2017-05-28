@@ -33,7 +33,7 @@ shared_examples 'Form Filling' do |inputs, outputs, lookup|
 end
 
 describe 'Ferris Actions' do
-  #describe('Text') { it_supports 'Form Filling', :text_input, :text_output, :value }
+  describe('Text') { it_supports 'Form Filling', :text_input, :text_output, :value }
   describe('Select List (Text)') { it_supports 'Form Filling', :select_list_text_input, :select_list_text_output, :value }
   describe('Select Lists (Value)') { it_supports 'Form Filling', :select_list_value_input, :select_list_value_output, :value }
   describe('Checkboxes') { it_supports 'Form Filling', :checkbox_input, :checkbox_output, :checked? }
