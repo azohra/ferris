@@ -1,34 +1,51 @@
 require_relative '../../spec_helper'
 
 describe Ferris::Page do
-  let(:compliance_site) { ComplianceSite.new(url: BASE_URL) }
+
+  before(:all) do
+    @website = Website.new(url: BASE_URL)
+  end
 
   it 'is the correct object type' do
-    expect(compliance_site.elements_page).to be_a Ferris::Page
+    expect(@website.elements_page).to be_a Ferris::Page
   end
 
   it 'responds to visit' do
-    expect(compliance_site.elements_page).to respond_to :visit
+    expect(@website.elements_page).to respond_to :visit
   end
 
   it 'responds to title' do
-    expect(compliance_site.elements_page).to respond_to :title
+    expect(@website.elements_page).to respond_to :title
   end
 
   it 'responds to url' do
-    expect(compliance_site.elements_page).to respond_to :url
+    expect(@website.elements_page).to respond_to :url
   end
 
+  it 'responds to fill' do
+    expect(@website.elements_page).to respond_to :fill    
+  end
+
+  it 'responds to fill!' do
+    expect(@website.elements_page).to respond_to :fill!    
+  end  
+
   it 'can retrieve its title' do
-    expect(compliance_site.elements_page.title).to eql 'HTML5 Test Page'
+    expect(@website.elements_page.title).to eql @website.browser.title
   end
 
   it 'can retrieve its url' do
-    expect(compliance_site.browser.url).to eql compliance_site.elements_page.url
+    expect(@website.elements_page.url).to eql @website.browser.url
   end
 
   it 'caches itself when called with a bang!' do
-    expect(compliance_site.elements_page!).to eq(compliance_site.elements_page!)
+    expect(@website.elements_page!).to eq(@website.elements_page!)
+  end
+
+  it 'caching is faster for a page' do
+    not_cached = Benchmark.measure { @website.elements_page }
+    cached = Benchmark.measure { @website.elements_page! }
+    expect(cached.real).to be < not_cached.real
   end
 
 end
