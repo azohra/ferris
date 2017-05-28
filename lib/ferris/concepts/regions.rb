@@ -3,7 +3,7 @@ module Ferris
     module Regions
       def regions(name, klass, &blk)
         define_method(name) do
-          instance_variable_set("@_#{name}", instance_exec(&blk).map { |block| klass.new(browser: self.browser, root: block) })
+          instance_variable_set("@_#{name}", instance_exec(&blk).map { |root| klass.new(browser: self.browser, root: root) })
         end
         define_method("#{name}!") { instance_variable_get("@_#{name}") || send(name) }
       end
