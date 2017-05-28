@@ -27,8 +27,11 @@ class HTML5DemoFormData < WatirModel
       text_area: 'This is a long text string with a lot of content in it' }
   end
 
-  key(:select_input) { { select_list: 'Option Two' } }
-  key(:select_output) { { select_list: 'Option Two' } }
+  key(:select_list_text_input) { { select_list: 'Option Two' } }
+  key(:select_list_text_output) { { select_list: 'Option Two' } }
+
+  key(:select_list_value_input) { { select_list: "1" } }
+  key(:select_list_value_output) { { select_list: 'Option One' } }
 
   key(:checkbox_input) do
     { checkbox_1: true,

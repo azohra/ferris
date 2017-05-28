@@ -8,13 +8,9 @@ module Ferris
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
 
-    def initialize(browser: Ferris::Browser.browser, url:)
-      @url = url
-      @browser = browser
-    end
-
-    def site
-      self
+    def initialize(**keyword_args)
+      @url = keyword_args[:url]
+      @browser = Ferris::Browser.browser
     end
 
     def visit

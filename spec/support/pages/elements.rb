@@ -2,7 +2,7 @@ class ElementsPage < Ferris::Page
 
   partial_url { '/index.html' }
   title { 'HTML5 Test Page' }
-
+  
   # Inputs
   element(:text_field) { browser.text_field(id: 'input__text') }
   element(:password)   { browser.text_field(id: 'input__password') }
