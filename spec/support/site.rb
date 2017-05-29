@@ -10,7 +10,6 @@ class Website < Ferris::Site
   rgn(:header,    Rgn::Header)  { b.header }
   rgn(:articles,  Rgn::Article) { b.articles }
 
-
 end
 
 
