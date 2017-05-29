@@ -38,23 +38,25 @@ describe 'Ferris Session' do
     it 'responds to clear_cookies' do
      expect(@local_session).to respond_to :clear_cookies
     end 
+
+     it 'can change size' do
+      expect(@local_session.size= {width: 1020, height: 1024}).to be_truthy
+    end 
+
+     it 'can clear cookies' do
+      expect(@local_session.clear_cookies).to be nil 
+    end 
   end
 
   context 'Remote' do
     
     before(:all) do
-      system('docker run -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium')
-      system('docker run --name chrome -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium')
-      sleep(5) #let docker containers startup       
      @remote_session= Ferris::Session::Remote.new(browser: 'chrome')
     end
-    
-    after(:all) do 
-      system('docker stop selenium-hub')
-      system('docker stop chrome')
-      system('docker rm selenium-hub')
-      system('docker rm chrome')   
-    end
+
+    after(:all) do
+     @remote_session.close
+    end    
     
     it 'is the correct object type' do
       expect(@remote_session).to be_a Ferris::Session::Remote
@@ -80,12 +82,16 @@ describe 'Ferris Session' do
       expect(@remote_session).to respond_to :size=
     end    
 
-    it 'responds to method size=' do
-      expect(@remote_session).to respond_to :size=
-    end    
-
     it 'responds to clear_cookies' do
      expect(@remote_session).to respond_to :clear_cookies
     end 
+
+     it 'can change size' do
+      expect(@remote_session.size= {width: 1020, height: 1024}).to be_truthy
+    end 
+
+     it 'can clear cookies' do
+      expect(@remote_session.clear_cookies).to be nil 
+    end     
   end  
 end
