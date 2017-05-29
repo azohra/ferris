@@ -32,6 +32,7 @@ module Watir
       else
         browser.execute_script(js_click, self)
       end
+      fire_event :change
     end
 
     private 
