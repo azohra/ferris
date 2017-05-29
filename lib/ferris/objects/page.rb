@@ -12,6 +12,7 @@ module Ferris
       @sa = site_args
       @b = browser
       @url = url + partial_url
+      initializer if respond_to?(:initializer)
     end
 
     def visit
