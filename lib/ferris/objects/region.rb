@@ -14,6 +14,5 @@ module Ferris
       @browser = browser
       @root = root ? root : instance_exec(&blk)
     end
-    
   end
 end
