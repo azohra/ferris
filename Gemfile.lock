@@ -22,6 +22,9 @@ GEM
     ffi (1.9.18)
     json (2.0.3)
     method_source (0.8.2)
+    parallel (1.11.2)
+    parallel_tests (2.14.1)
+      parallel
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
@@ -79,6 +82,7 @@ PLATFORMS
 DEPENDENCIES
   coveralls
   ferris_watir!
+  parallel_tests
   pry
   rspec (~> 3.0)
   rubocop
