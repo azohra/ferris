@@ -14,6 +14,7 @@ module Ferris
       @sa = site_args
       @b = browser
       @r = root
+      initializer if respond_to?(:initializer)
     end
   end
 end

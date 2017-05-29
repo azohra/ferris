@@ -12,6 +12,7 @@ module Ferris
       @sa = args
       visit
       maximize
+      initializer if respond_to?(:initializer)
     end
 
     def visit
