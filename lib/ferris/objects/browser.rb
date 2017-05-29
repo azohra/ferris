@@ -38,7 +38,7 @@ module Ferris
       end
 
       def stop
-        browser.close
+        browser.quit
       end
 
       def maximize
