@@ -11,6 +11,7 @@ module Ferris
       @url = args[:url]
       @sa = args
       visit
+      maximize
     end
 
     def visit
