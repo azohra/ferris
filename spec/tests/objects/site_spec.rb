@@ -15,7 +15,11 @@ describe Ferris::Site do
       expect(@local_website).to be_a Ferris::Site
     end
 
-    it 'responds to url' do
+     it 'responds to attr site_args' do
+      expect(@local_website).to respond_to :site_args
+    end   
+
+    it 'responds to attr url' do
       expect(@local_website).to respond_to :url
     end
 
@@ -43,6 +47,10 @@ describe Ferris::Site do
      expect(@local_website).to respond_to :clear_cookies
     end 
 
+    it 'site_args is a hash' do
+      expect(@local_website.site_args).to be_a Hash
+    end
+
      it 'can change size' do
       expect(@local_website.resize_to(width: 1020, height: 1024)).to be nil
     end 
@@ -58,18 +66,27 @@ describe Ferris::Site do
 
   context 'Remote' do 
     before(:all) do
+      system('docker run -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium')
+      system('docker run --name chrome -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium')
+      sleep(5)
       @remote_website = Website.new(:remote, browser: 'chrome', url: BASE_URL)
     end
 
     after(:all) do
       @remote_website.close
+      system('docker stop selenium-hub chrome')
+      system('docker rm selenium-hub chrome')
     end
 
     it 'is the correct object type' do
       expect(@remote_website).to be_a Ferris::Site
     end
 
-    it 'responds to url' do
+    it 'responds to attr site_args' do
+      expect(@remote_website).to respond_to :site_args
+    end
+
+    it 'responds to attr url' do
       expect(@remote_website).to respond_to :url
     end
 
@@ -96,6 +113,10 @@ describe Ferris::Site do
     it 'responds to clear_cookies' do
      expect(@remote_website).to respond_to :clear_cookies
     end 
+
+    it 'site_args is a hash' do
+      expect(@remote_website.site_args).to be_a Hash
+    end
 
      it 'can change size' do
       expect(@remote_website.resize_to(width: 1020, height: 1024)).to be nil
