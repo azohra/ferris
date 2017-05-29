@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency             'watir', '~> 6.1'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'parallel_tests'
   spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'watir_model'
