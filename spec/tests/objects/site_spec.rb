@@ -15,8 +15,8 @@ describe Ferris::Site do
       expect(@local_website).to be_a Ferris::Site
     end
 
-     it 'responds to attr site_args' do
-      expect(@local_website).to respond_to :site_args
+     it 'responds to attr sa' do
+      expect(@local_website).to respond_to :sa
     end   
 
     it 'responds to attr url' do
@@ -48,7 +48,7 @@ describe Ferris::Site do
     end 
 
     it 'site_args is a hash' do
-      expect(@local_website.site_args).to be_a Hash
+      expect(@local_website.sa).to be_a Hash
     end
 
      it 'can change size' do
@@ -82,8 +82,8 @@ describe Ferris::Site do
       expect(@remote_website).to be_a Ferris::Site
     end
 
-    it 'responds to attr site_args' do
-      expect(@remote_website).to respond_to :site_args
+    it 'responds to attr sa' do
+      expect(@remote_website).to respond_to :sa
     end
 
     it 'responds to attr url' do
@@ -115,7 +115,7 @@ describe Ferris::Site do
     end 
 
     it 'site_args is a hash' do
-      expect(@remote_website.site_args).to be_a Hash
+      expect(@remote_website.sa).to be_a Hash
     end
 
      it 'can change size' do
