@@ -1,6 +1,6 @@
 module Ferris
   class Region
-    attr_reader :r, :b
+    attr_reader :r, :b, :s
 
     include Ferris::Concepts::FormFilling
 
@@ -10,7 +10,8 @@ module Ferris
 
     def_delegators :r, :exists?, :present?
 
-    def initialize(browser:, root:)
+    def initialize(browser:, root:, site_args:)
+      @site_args = session
       @b = browser
       @r = root
     end

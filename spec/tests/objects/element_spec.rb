@@ -18,7 +18,4 @@ describe 'Ferris Element' do
     expect(@website.header.title).to be_a Watir::Element
   end
 
-  it 'is retrievable from a site' do
-    expect(@website.my_element).to be_a Watir::Element
-  end
 end
