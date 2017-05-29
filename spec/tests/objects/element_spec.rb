@@ -1,9 +1,14 @@
 require_relative '../../spec_helper'
+require 'benchmark'
 
 describe 'Ferris Element' do
 
   before(:all) do
-    @website = Website.new(url: BASE_URL)
+    @website = Website.new(:local, url: BASE_URL)
+  end
+
+  after(:all) do
+    @website.close
   end
 
   it 'responds to keyword' do

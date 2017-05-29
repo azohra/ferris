@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class HTML5DemoFormData < WatirModel
-  key(:text_input) do
+  key(:text) do
     { text_field: 'Apple',
       password: 'MyPassword123#1',
       website: 'http://www.google.ca',
@@ -14,52 +14,17 @@ class HTML5DemoFormData < WatirModel
       text_area: 'This is a long text string with a lot of content in it' }
   end
 
-  key(:text_output) do
-    { text_field: 'Apple',
-      password: 'MyPassword123#1',
-      website: 'http://www.google.ca',
-      email: 'ferris@bueller.ca',
-      phone: '4165555555',
-      search: 'Apples',
-      number: '10564',
-      error: 'Error!',
-      valid: 'Valid!',
-      text_area: 'This is a long text string with a lot of content in it' }
-  end
-
-  key(:select_list_text_input) { { select_list: 'Option Three' } }
-  key(:select_list_text_output) { { select_list: '3' } }
-
-  key(:select_list_value_input) { { select_list: '2' } }
-  key(:select_list_value_output) { { select_list: '2' } }
-
-  key(:checkbox_input) do
+  key(:checkbox) do
     { checkbox_1: true,
       checkbox_2: false,
       checkbox_3: true }
   end
 
-  key(:checkbox_output) do
-    { checkbox_1: true,
-      checkbox_2: false,
-      checkbox_3: true }
+  key(:radio) do
+    { radio_3: true }
   end
 
-  key(:radio_input) do
-    { radio_1: true,
-      radio_2: false,
-      radio_3: true }
-  end
-
-  key(:radio_output) do
-    { radio_1: false,
-      radio_2: false,
-      radio_3: true }
-  end
-
-  key(:button_input) do
-    { submit_btn: true,
-      button_btn: false,
-      reset_btn: true }
-  end
+  key(:select_list_text)  { { select_list: 'Option Three' } }
+  key(:select_list_value) { { select_list: '2' } }
+  key(:button)            { { button_btn: true } }
 end

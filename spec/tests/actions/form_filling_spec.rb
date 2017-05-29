@@ -1,41 +1,52 @@
 require_relative '../../spec_helper'
 require 'benchmark'
 
-shared_examples 'Form Filling' do |inputs, outputs, lookup|
+shared_examples 'Form Filling' do |inputs, retrieval_method|
 
   before(:all) do
-    @website = Website.new(url: BASE_URL)
+    @website = Website.new(:local, url: BASE_URL)
   end
 
-  let(:data_set) { HTML5DemoFormData.new }
-  let(:form_data) { data_set.send(inputs) }
-  let(:expected_output) { data_set.send(outputs) }
-  let(:found_result) { Hash[form_data.map { |k, _v| [k, @website.elements_page.send(k).send(lookup)] }] }
+  after(:all) do
+    @website.close
+  end
+  
+  let(:input_data)   { HTML5DemoFormData.new.send(inputs) }
+  let(:website_data) { Hash[input_data.map { |k, _v| [k, @website.elements_page.send(k).send(retrieval_method)] }] }
 
   it 'accurately populates with fill' do
-    @website.elements_page.visit.fill(form_data)
-    expect(found_result).to include expected_output
+    @website.elements_page.visit.fill(input_data)
+    if inputs == :select_list_text
+      expect(Hash[input_data.map { |k, _v| [k, @website.elements_page.send(k).selected_options.first.text]}] ).to include input_data
+    else 
+      expect(website_data).to include input_data
+    end
   end
 
   it 'accurately populates with fill!' do
-    @website.elements_page.visit.fill!(form_data)
-    expect(found_result).to include expected_output
+    @website.elements_page.visit.fill!(input_data)
+    if inputs == :select_list_text
+      expect(Hash[input_data.map { |k, _v| [k, @website.elements_page.send(k).selected_options.first.text]}] ).to include input_data
+    else 
+      expect(website_data).to include input_data
+    end
   end
 
   it 'fill! is better than fill' do
     @website.elements_page.visit
-    watir = Benchmark.measure { @website.elements_page.fill(form_data) }
+    watir = Benchmark.measure { @website.elements_page.fill(input_data) }
     @website.elements_page.visit
-    ferris = Benchmark.measure { @website.elements_page.fill!(form_data) }
+    ferris = Benchmark.measure { @website.elements_page.fill!(input_data) }
     expect(ferris.real).to be < watir.real
   end
 
 end
 
 describe 'Ferris Actions' do
-  describe('Text') { it_supports 'Form Filling', :text_input, :text_output, :value }
-  describe('Select List (Text)') { it_supports 'Form Filling', :select_list_text_input, :select_list_text_output, :value }
-  describe('Select Lists (Value)') { it_supports 'Form Filling', :select_list_value_input, :select_list_value_output, :value }
-  describe('Checkboxes') { it_supports 'Form Filling', :checkbox_input, :checkbox_output, :checked? }
-  describe('Radios') { it_supports 'Form Filling', :radio_input, :radio_output, :set? }
+  describe('Text') { it_supports 'Form Filling', :text, :value }
+  describe('Select List (Text)') { it_supports 'Form Filling', :select_list_text, :text }
+  describe('Select Lists (Value)') { it_supports 'Form Filling', :select_list_value, :value }
+  describe('Checkboxes') { it_supports 'Form Filling', :checkbox, :checked? }
+  describe('Radios') { it_supports 'Form Filling', :radio, :set? }
+  describe('Buttons') { it_supports 'Form Filling', :button, :exists? } #hack to add coverage, no way to assert action happen.
 end
