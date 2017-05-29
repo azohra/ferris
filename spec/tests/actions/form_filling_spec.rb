@@ -5,6 +5,7 @@ shared_examples 'Form Filling' do |inputs, retrieval_method|
 
   before(:all) do
     @website = Website.new(:local, url: BASE_URL)
+    @page = @website.elements_pg
   end
 
   after(:all) do
@@ -12,31 +13,31 @@ shared_examples 'Form Filling' do |inputs, retrieval_method|
   end
   
   let(:input_data)   { HTML5DemoFormData.new.send(inputs) }
-  let(:website_data) { Hash[input_data.map { |k, _v| [k, @website.elements_page.send(k).send(retrieval_method)] }] }
+  let(:website_data) { Hash[input_data.map { |k, _v| [k, @page.send(k).send(retrieval_method)] }] }
 
   it 'accurately populates with fill' do
-    @website.elements_page.visit.fill(input_data)
+    @page.visit.fill(input_data)
     if inputs == :select_list_text
-      expect(Hash[input_data.map { |k, _v| [k, @website.elements_page.send(k).selected_options.first.text]}] ).to include input_data
+      expect(Hash[input_data.map { |k, _v| [k, @page.send(k).selected_options.first.text]}] ).to include input_data
     else 
       expect(website_data).to include input_data
     end
   end
 
   it 'accurately populates with fill!' do
-    @website.elements_page.visit.fill!(input_data)
+    @page.visit.fill!(input_data)
     if inputs == :select_list_text
-      expect(Hash[input_data.map { |k, _v| [k, @website.elements_page.send(k).selected_options.first.text]}] ).to include input_data
+      expect(Hash[input_data.map { |k, _v| [k, @page.send(k).selected_options.first.text]}] ).to include input_data
     else 
       expect(website_data).to include input_data
     end
   end
 
   it 'fill! is better than fill' do
-    @website.elements_page.visit
-    watir = Benchmark.measure { @website.elements_page.fill(input_data) }
-    @website.elements_page.visit
-    ferris = Benchmark.measure { @website.elements_page.fill!(input_data) }
+    @page.visit
+    watir = Benchmark.measure { @page.fill(input_data) }
+    @page.visit
+    ferris = Benchmark.measure { @page.fill!(input_data) }
     expect(ferris.real).to be < watir.real
   end
 

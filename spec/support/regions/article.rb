@@ -1,3 +1,4 @@
-class Article < Ferris::Region
-
+module Rgn
+  class Article < Ferris::Region
+  end
 end

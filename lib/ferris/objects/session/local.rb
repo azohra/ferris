@@ -1,10 +1,7 @@
-
-
 module Ferris
   module Session
     class Local
-
-      include Ferris::Session
+      attr_reader :browser, :switches, :prefs
 
       SWITCH_MAP = { headless:          '--headless',
                      cpu_only:          '--disable-gpu',
@@ -25,8 +22,7 @@ module Ferris
           add_pref(k, v)   if PREF_MAP.include?(k)         # write false prefs
         end
         @browser = Watir::Browser.new(vendor, switches: @switches, prefs: @prefs)
-        maximize
-      end  
+      end
 
       def add_switch(k, v)
         @switches.push SWITCH_MAP[k].gsub('****', v.to_s)
@@ -40,7 +36,6 @@ module Ferris
           @prefs[:profile][PREF_MAP[k]] = v
         end
       end
-
     end
   end
-end                         
+end

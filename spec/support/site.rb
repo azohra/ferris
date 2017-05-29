@@ -5,12 +5,12 @@ require_relative 'pages/elements'
 
 class Website < Ferris::Site
 
-  page(:elements_page, ElementsPage)
+  pg(:elements_pg, Pg::El)
 
-  region(:header,    Header)   { browser.header }
-  regions(:articles, Article)  { browser.articles }
+  rgn(:header,    Rgn::Header)  { b.header }
+  rgn(:articles,  Rgn::Article) { b.articles }
     
-  element(:my_element) { browser.body }
+  el(:my_element) { b.body }
 
 end
 
