@@ -1,6 +1,6 @@
 module Rgn
   class Header < Ferris::Region
-    element(:title) { r.h1 }
-    element(:tagline) { r.p }
+    el(:title) { r.h1 }
+    el(:tagline) { r.p }
   end
 end
