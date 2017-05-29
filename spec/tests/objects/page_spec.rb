@@ -16,16 +16,24 @@ describe Ferris::Page do
     expect(@page).to be_a Ferris::Page
   end
 
+  it 'responds to attr b' do
+    expect(@page).to respond_to :b
+  end
+
+  it 'responds to attr sa' do
+    expect(@page).to respond_to :sa
+  end  
+
+  it 'responds to attr url' do
+    expect(@page).to respond_to :url
+  end
+
   it 'responds to visit' do
     expect(@page).to respond_to :visit
   end
 
   it 'responds to title' do
     expect(@page).to respond_to :title
-  end
-
-  it 'responds to url' do
-    expect(@page).to respond_to :url
   end
 
   it 'responds to fill' do

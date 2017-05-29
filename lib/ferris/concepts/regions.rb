@@ -5,9 +5,9 @@ module Ferris
         define_method(name) do
           root = instance_exec(&blk)
           if root.respond_to?(:to_a)
-            root.map { |rt| klass.new(browser: b, root: rt, site_args: site_args) }
+            root.map { |rt| klass.new(browser: b, root: rt, site_args: sa) }
           else
-            klass.new(browser: b, root: root)
+            klass.new(browser: b, root: root, site_args: sa)
           end
         end
       end

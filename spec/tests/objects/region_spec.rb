@@ -17,6 +17,10 @@ describe 'Ferris' do
       expect(@region).to be_a Ferris::Region
     end
 
+    it 'responds to attr sa' do
+      expect(@region).to respond_to :sa
+    end    
+
     it 'responds to attr r' do
       expect(@region).to respond_to :r
     end    
@@ -48,6 +52,10 @@ describe 'Ferris' do
     it 'knows its size' do
       expect(@regions.size).to eq 16
     end
+
+    it 'responds to attr sa' do
+      expect(@regions.first).to respond_to :sa
+    end    
 
     it 'responds to attr r' do
       expect(@regions.first).to respond_to :r

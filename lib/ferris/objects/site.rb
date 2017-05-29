@@ -1,7 +1,7 @@
 
 module Ferris
   class Site
-    attr_reader :url, :b, :site_args, :width, :height
+    attr_reader :url, :b, :sa, :width, :height
 
     extend Ferris::Concepts::Pages
     extend Ferris::Concepts::Regions
@@ -9,7 +9,7 @@ module Ferris
     def initialize(type, **args)
       @b = Ferris::Browser.send(type, args)
       @url = args[:url]
-      @site_args = args
+      @sa = args
       visit
     end
 
