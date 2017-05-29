@@ -1,6 +1,6 @@
 module Ferris
   class Page
-    attr_reader :url, :session, :browser
+    attr_reader :url, :b
 
     include Ferris::Concepts::FormFilling
 
@@ -8,14 +8,13 @@ module Ferris
     extend Ferris::Concepts::Elements
     extend Ferris::Concepts::PageAttributes
 
-    def initialize(**keyword_args)
-      @session = keyword_args[:session]
-      @browser = @session.browser
-      @url = keyword_args[:url] + partial_url
+    def initialize(browser:, url:)
+      @b = browser
+      @url = url + partial_url
     end
 
     def visit
-      browser.goto url
+      b.goto url
       ensure_loaded if respond_to?(:ensure_loaded)
       self
     end

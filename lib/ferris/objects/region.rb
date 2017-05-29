@@ -1,6 +1,6 @@
 module Ferris
   class Region
-    attr_reader :root, :session, :browser
+    attr_reader :r, :b
 
     include Ferris::Concepts::FormFilling
 
@@ -8,13 +8,11 @@ module Ferris
     extend Ferris::Concepts::Regions
     extend Ferris::Concepts::Elements
 
-    def_delegators :root, :exists?, :present?
+    def_delegators :r, :exists?, :present?
 
-    def initialize(**keyword_args, &blk)
-      @session = keyword_args[:session]
-      @browser = @session.browser
-      @root = keyword_args[:root] ? keyword_args[:root] : instance_exec(&blk)
+    def initialize(browser:, root:)
+      @b = browser
+      @r = root
     end
-
   end
 end
