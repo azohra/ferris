@@ -9,7 +9,7 @@ require_relative 'support/site'
 BASE_URL = 'https://automation-wizards.github.io/ferris'
 
 Watir.default_timeout = 1
-Ferris::Browser.start
+#Ferris::Browser.start
 #Ferris::Browser.remote(hub:"http://localhost:4444/wd/hub", browser: "chrome")
 
 RSpec.configure do |config|

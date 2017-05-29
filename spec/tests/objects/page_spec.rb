@@ -1,9 +1,14 @@
 require_relative '../../spec_helper'
+require 'benchmark'
 
 describe Ferris::Page do
 
   before(:all) do
-    @website = Website.new(url: BASE_URL)
+    @website = Website.new(:local, url: BASE_URL)
+  end
+
+  after(:all) do
+    @website.close
   end
 
   it 'is the correct object type' do
@@ -31,11 +36,11 @@ describe Ferris::Page do
   end  
 
   it 'can retrieve its title' do
-    expect(@website.elements_page.title).to eql @website.browser.title
+    expect(@website.elements_page.title).to be_a String
   end
 
   it 'can retrieve its url' do
-    expect(@website.elements_page.url).to eql @website.browser.url
+    expect(@website.elements_page.url).to be_a String
   end
 
   it 'caches itself when called with a bang!' do
