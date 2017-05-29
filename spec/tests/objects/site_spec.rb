@@ -2,6 +2,43 @@ require_relative '../../spec_helper'
 
 describe Ferris::Site do
 
+  before(:all) do
+    unless ENV['TRAVIS']
+      system('docker run -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium')
+      system('docker run --name chrome -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium')
+      sleep(5)
+    end
+  end
+
+  after(:all) do
+    unless ENV['TRAVIS']      
+      system('docker stop selenium-hub chrome')
+      system('docker rm selenium-hub chrome')
+    end
+  end
+
+  context 'Browser Mutation' do 
+
+    after(:each) do
+      @website.close
+    end
+    
+    it 'supports switches' do
+      @website = Website.new(:local,headless: false, ignore_ssl_errors: true,  url: BASE_URL)
+      expect(@website).to be_a Ferris::Site
+    end
+
+   it 'supports prefs' do
+     @website = Website.new(:local, geolocation: 2,  url: BASE_URL)
+      expect(@website).to be_a Ferris::Site
+    end
+
+   it 'supports capabilities' do
+     @website = Website.new(:remote, browser: 'chrome', url: BASE_URL)
+      expect(@website).to be_a Ferris::Site
+    end
+  end
+  
   context 'Local' do 
     before(:all) do
       @local_website = Website.new(:local, url: BASE_URL)
@@ -66,16 +103,11 @@ describe Ferris::Site do
 
   context 'Remote' do 
     before(:all) do
-      system('docker run -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium')
-      system('docker run --name chrome -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium')
-      sleep(5)
       @remote_website = Website.new(:remote, browser: 'chrome', url: BASE_URL)
     end
 
     after(:all) do
       @remote_website.close
-      system('docker stop selenium-hub chrome')
-      system('docker rm selenium-hub chrome')
     end
 
     it 'is the correct object type' do
