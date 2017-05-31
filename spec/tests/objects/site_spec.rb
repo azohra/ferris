@@ -87,8 +87,7 @@ describe Ferris::Site do
   context 'Remote', :remote do
 
     before(:all) do
-      if self.class.metadata[:remote]
-
+      if self.class.metadata[:remote] && !ENV['TRAVIS']
         system('docker run -d -p 4444:4444 --name selenium-hub selenium/hub:3.4.0-chromium')
         system('docker run --name chrome -d --link selenium-hub:hub selenium/node-chrome:3.4.0-chromium')
         sleep(5)
@@ -97,7 +96,7 @@ describe Ferris::Site do
     end
 
     after(:all) do
-      if self.class.metadata[:remote]
+      if self.class.metadata[:remote] && !ENV['TRAVIS']
         @remote_website.close
         system('docker stop selenium-hub chrome')
         system('docker rm selenium-hub chrome')
