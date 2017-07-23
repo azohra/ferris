@@ -11,7 +11,6 @@ module Ferris
                      screenshot:        '--screenshot',
                      no_sandbox:        '--no-sandbox',
                      cpu_only:          '--disable-gpu',
-                     no_sandbox:        '--no-sandbox',
                      profile:           'user-data-dir=****',
                      size:              '--window-size=****',
                      user_agent:        '--user-agent=****',
