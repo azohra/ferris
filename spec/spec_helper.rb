@@ -12,7 +12,7 @@ Watir.default_timeout = 5
 
 Ferris::Browser.define(:my_default,  :local)
 Ferris::Browser.define(:my_custom,   :local, ignore_ssl_errors: true)
-Ferris::Browser.define(:remote_chrome, :remote, browser: 'chrome')
+Ferris::Browser.define(:remote_chrome, :remote, browser: 'chrome', hub: 'http://localhost:4445/wd/hub')
 Ferris::Browser.default = :my_default
 
 RSpec.configure do |config|
@@ -21,7 +21,7 @@ RSpec.configure do |config|
   
   config.before(:suite) do
     system('docker stop hub && docker rm hub || die')
-    system('docker run --name hub -d -p 4444:4444 selenium/standalone-chrome:latest')
+    system('docker run --name hub -d -p 4445:4444 selenium/standalone-chrome:latest')
   end
 
   config.after(:suite) do
