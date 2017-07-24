@@ -6,7 +6,7 @@ require 'pry'
 
 require_relative 'support/site'
 
-BASE_URL = 'https://automation-wizards.github.io/ferris'
+BASE_URL = 'https://azohra.github.io/ferris'
 
 Watir.default_timeout = 5
 
