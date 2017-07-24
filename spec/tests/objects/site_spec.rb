@@ -27,16 +27,6 @@ describe Ferris::Site do
       expect(@website).to be_a Ferris::Site
     end
 
-    it 'supports maximizing a headless window' do
-      @website = Website.new(headless: true, url: BASE_URL)
-      expect(@website.browser.window.maximize).to be_truthy
-    end
-
-    it 'supports re-sizing a headless window' do
-      @website = Website.new(headless: true, url: BASE_URL)
-      expect(@website.browser.window.resize_to 100, 100).to be_truthy
-    end
-
    it 'supports prefs' do
      @website = Website.new(geolocation:2, url: BASE_URL)
      expect(@website).to be_a Ferris::Site
