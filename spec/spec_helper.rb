@@ -8,7 +8,7 @@ require_relative 'support/site'
 
 BASE_URL = 'https://automation-wizards.github.io/ferris'
 
-Watir.default_timeout = 1
+Watir.default_timeout = 5
 
 Ferris::Browser.define(:my_default,  :local)
 Ferris::Browser.define(:my_custom,   :local, ignore_ssl_errors: true)
