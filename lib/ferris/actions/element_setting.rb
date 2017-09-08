@@ -8,11 +8,7 @@ module Watir
       when Watir::CheckBox
         v ? set : clear
       when Watir::Select
-        begin
-          select v
-        rescue Watir::Exception::NoValueFoundException
-          select_value v
-        end
+        select v
       when Watir::TextField, Watir::TextArea, Watir::Input
         set v
       else

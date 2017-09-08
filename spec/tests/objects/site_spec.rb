@@ -27,15 +27,11 @@ describe Ferris::Site do
       expect(@website).to be_a Ferris::Site
     end
 
-   it 'supports prefs' do
-     @website = Website.new(geolocation:2, url: BASE_URL)
-     expect(@website).to be_a Ferris::Site
-    end
-
-   it 'supports capabilities' do
-     @website = Website.new(driver: :remote_chrome, url: BASE_URL)
+    it 'supports prefs' do
+      @website = Website.new(geolocation:2, url: BASE_URL)
       expect(@website).to be_a Ferris::Site
     end
+
   end
   
   context 'Local' do 
@@ -85,60 +81,6 @@ describe Ferris::Site do
 
     it 'can retrieve its url' do
       expect( @local_website.url).to eql BASE_URL
-    end
-  end
-
-  context 'Remote' do 
-    before(:all) do
-      @remote_website = Website.new(driver: :remote_chrome, url: BASE_URL)
-    end
-
-    after(:all) do
-      @remote_website.close
-    end
-
-    it 'is the correct object type' do
-      expect(@remote_website).to be_a Ferris::Site
-    end
-
-     it 'responds to attr site' do
-      expect(@remote_website).to respond_to :site
-    end   
-
-     it 'responds to attr s' do
-      expect(@remote_website).to respond_to :s
-    end   
-
-    it 'responds to attr args' do
-      expect(@remote_website).to respond_to :args
-    end
-
-    it 'responds to attr url' do
-      expect(@remote_website).to respond_to :url
-    end
-
-    it 'responds to attr b' do
-      expect(@remote_website).to respond_to :b
-    end      
-
-    it 'responds to attr browser' do
-      expect(@remote_website).to respond_to :browser
-    end
-
-    it 'responds to clear_cookies' do
-     expect(@remote_website).to respond_to :clear_cookies
-    end 
-
-    it 'site args is a hash' do
-      expect(@remote_website.args).to be_a Hash
-    end
-
-     it 'can clear cookies' do
-      expect(@remote_website.clear_cookies).to be nil 
-    end 
-
-    it 'can retrieve its url' do
-      expect( @remote_website.url).to eql BASE_URL
     end
   end
 end

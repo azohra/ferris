@@ -32,7 +32,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = unignored_files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_dependency             'watir', '~> 6.1'
-  spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_dependency             'watir', '~> 6.8'
+  spec.add_development_dependency 'rspec', '~> 3.5'
   spec.add_development_dependency 'coveralls'
 end
