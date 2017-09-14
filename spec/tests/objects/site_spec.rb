@@ -75,6 +75,10 @@ describe Ferris::Site do
      expect(@local_website).to respond_to :clear_cookies
     end 
 
+    it 'responds to reopen_browser' do
+      expect(@local_website).to respond_to :reopen_browser
+    end
+
     it 'site_args is a hash' do
       expect(@local_website.args).to be_a Hash
     end
@@ -128,6 +132,10 @@ describe Ferris::Site do
     it 'responds to clear_cookies' do
      expect(@remote_website).to respond_to :clear_cookies
     end 
+
+    it 'responds to reopen_browser' do
+      expect(@remote_website).to respond_to :reopen_browser
+    end
 
     it 'site args is a hash' do
       expect(@remote_website.args).to be_a Hash
