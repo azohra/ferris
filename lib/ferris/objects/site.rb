@@ -40,5 +40,12 @@ module Ferris
     def clear_cookies
       browser.cookies.clear
     end
+
+    def reopen_browser
+      close
+      @browser = Ferris::Browser.start(@args)
+      initializer
+      visit
+    end
   end
 end
