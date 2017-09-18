@@ -1,6 +1,6 @@
 # Ferris
- [![Build Status](https://travis-ci.org/automation-wizards/ferris.svg?branch=master)](https://travis-ci.org/automation-wizards/ferris)
- [![Coverage Status](https://coveralls.io/repos/github/automation-wizards/ferris/badge.svg?branch=master)](https://coveralls.io/github/automation-wizards/ferris?branch=master)
+ [![Build Status](https://travis-ci.org/azohra/ferris.svg?branch=master)](https://travis-ci.org/azohra/ferris)
+ [![Coverage Status](https://coveralls.io/repos/github/azohra/ferris/badge.svg?branch=master)](https://coveralls.io/github/azohra/ferris?branch=master)
 
 ## Synopsis
 

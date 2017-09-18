@@ -1,8 +1,16 @@
-FROM ruby:2.4.0-alpine
+FROM azohra/cloud-runner:debian-ruby-chrome-beta
+MAINTAINER Justin Commu
 
-RUN apk update && apk add build-base
+WORKDIR /tmp
+ADD .gitignore .gitignore
+ADD ferris.gemspec ferris.gemspec
+ADD Gemfile Gemfile
+ADD Gemfile.lock Gemfile.lock
+RUN bundle install
+
+# Everything up to here was cached. This includes the bundle install, unless the Gemfiles changed. Now copy the app into the image.
 RUN mkdir /app
 WORKDIR /app
+ADD . /app
 
-COPY . .
-RUN bundle install -j 20
+ENTRYPOINT ["bundle", "exec", "rspec"]
