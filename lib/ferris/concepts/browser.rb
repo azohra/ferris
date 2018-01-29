@@ -55,7 +55,7 @@ module Ferris
       end
 
       def local(**args)
-        Watir::Browser.new(:chrome, service_log_path: '/logs/chromedirver.log', options: Selenium::WebDriver::Chrome::Options.new(args: map_switches(args), prefs: map_prefs(args)))
+        Watir::Browser.new(:chrome, options: Selenium::WebDriver::Chrome::Options.new(args: map_switches(args), prefs: map_prefs(args)))
       end
 
       def remote(**args)
