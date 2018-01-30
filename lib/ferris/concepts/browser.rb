@@ -15,7 +15,7 @@ module Ferris
                      profile:           'user-data-dir=****',
                      size:              '--window-size=****',
                      user_agent:        '--user-agent=****',
-                     ignore_ssl_errors: '--ignore-certificate-errors --ignore-certificate-errors-spki-list',
+                     ignore_ssl_errors: '--ignore-certificate-errors',
                      headless_insecure: '--acceptInsecureCerts=****',
                      allow_insecure:    '--allow-running-insecure-content' }.freeze
 
