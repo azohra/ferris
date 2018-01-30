@@ -4,10 +4,11 @@ module Ferris
       
       attr_accessor :default
 
+      DRIVER_OPTS_MAP = { logs: 'log_path', verbose: 'verbose' }.freeze
+
       SWITCH_MAP = { remote_ip:         '--remote-debugging-address=****',
                      remote_port:       '--remote-debugging-port=****',
                      headless:          '--headless',
-                     logs:              '--log-path=****',
                      screenshot:        '--screenshot',
                      no_sandbox:        '--no-sandbox',
                      cpu_only:          '--disable-gpu',
@@ -55,7 +56,7 @@ module Ferris
       end
 
       def local(**args)
-        Watir::Browser.new(:chrome,  driver_opts: {verbose: true, log_path: 'chromedriver.log'}, options: Selenium::WebDriver::Chrome::Options.new(args: map_switches(args), prefs: map_prefs(args)))
+        Watir::Browser.new(:chrome,  driver_opts: map_driver_opts(args), options: Selenium::WebDriver::Chrome::Options.new(args: map_switches(args), prefs: map_prefs(args)))
       end
 
       def remote(**args)
@@ -89,6 +90,16 @@ module Ferris
         end
         pref_hash
       end
+
+    def map_driver_opts(args)
+      opts_hash = { }
+      args.each do |k, v|
+        next unless DRIVER_OPTS_MAP.include?(k)
+        opts_hash[DRIVER_OPTS_MAP[k].to_sym] = v
+      end
+      opts_hash
     end
+
+
   end
 end
