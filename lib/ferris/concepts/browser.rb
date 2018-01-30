@@ -91,15 +91,15 @@ module Ferris
         pref_hash
       end
 
-    def map_driver_opts(args)
-      opts_hash = { }
-      args.each do |k, v|
-        next unless DRIVER_OPTS_MAP.include?(k)
-        opts_hash[DRIVER_OPTS_MAP[k].to_sym] = v
+      def map_driver_opts(args)
+        opts_hash = { }
+        args.each do |k, v|
+          next unless DRIVER_OPTS_MAP.include?(k)
+          opts_hash[DRIVER_OPTS_MAP[k].to_sym] = v
+        end
+        opts_hash
       end
-      opts_hash
+
     end
-
-
   end
 end
