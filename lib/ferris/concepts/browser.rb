@@ -7,7 +7,7 @@ module Ferris
       SWITCH_MAP = { remote_ip:         '--remote-debugging-address=****',
                      remote_port:       '--remote-debugging-port=****',
                      headless:          '--headless',
-                     logs:              '--verbose --log-path=****',
+                     logs:              '--log-path=****',
                      screenshot:        '--screenshot',
                      no_sandbox:        '--no-sandbox',
                      cpu_only:          '--disable-gpu',
