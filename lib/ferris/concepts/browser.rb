@@ -16,7 +16,7 @@ module Ferris
                      size:              '--window-size=****',
                      user_agent:        '--user-agent=****',
                      ignore_ssl_errors: '--ignore-certificate-errors',
-                     headless_insecure: '--accept_insecure_certs',
+                     headless_insecure: '--accept-insecure-certs=****',
                      allow_insecure:    '--allow-running-insecure-content' }.freeze
 
       PREF_MAP   = { geolocation: :managed_default_content_settings,
